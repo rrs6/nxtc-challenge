@@ -6,9 +6,10 @@ services:
     ports:
       - "${POSTGRES_PORT}:5432"
     environment:
+      - JDBC_DATASOURCE_URL=${JDBC_DATASOURCE_URL}
       - POSTGRES_DB=${POSTGRES_DB}
       - POSTGRES_USER=${POSTGRES_USER}
-      - POSTGRES_PASSWORD=${POSTGRES_PASS}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
     volumes:
       - pgdata:/var/lib/postgresql/data
 
