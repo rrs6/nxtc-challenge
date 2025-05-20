@@ -6,12 +6,32 @@ services:
     ports:
       - "${POSTGRES_PORT}:5432"
     environment:
-      - JDBC_DATASOURCE_URL=${JDBC_DATASOURCE_URL}
       - POSTGRES_DB=${POSTGRES_DB}
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
     volumes:
       - pgdata:/var/lib/postgresql/data
 
+  angular-app:
+    build:
+      context: ./nxtc-frontend
+      dockerfile: dockerfile
+    ports:
+      - "4200:80"
+
+  api:
+    build:
+      context: ./nxtc-api
+      dockerfile: dockerfile
+    env_file:
+      - /.env
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - JDBC_DATASOURCE_URL=${JDBC_DATASOURCE_URL}
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
 volumes:
   pgdata:
