@@ -1,0 +1,63 @@
+.error {
+    opacity: 0;
+    transition: opacity ease-out 0.5s;
+    background-color: rgb(254, 74, 74);
+    padding: 5px 20px;
+    border-radius: 5px;
+    width: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+
+.error.show {
+    opacity: 1;
+    transition: opacity ease-in 0.5s;
+    background-color: rgb(254, 74, 74);
+    padding: 5px 20px;
+    border-radius: 5px;
+    width: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+
+.created {
+    opacity: 0;
+    transition: opacity ease-out 0.5s;
+    background-color: rgb(69, 254, 127);
+    padding: 5px 20px;
+    border-radius: 5px;
+    width: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+
+.created.show {
+    opacity: 1;
+    transition: opacity ease-in 0.5s;
+    background-color: rgb(69, 254, 127);
+    padding: 5px 20px;
+    border-radius: 5px;
+    width: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}

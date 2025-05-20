@@ -1,26 +1,43 @@
 <h2 class="mx-5 py-3">Create a new contact</h2>
+<div [ngClass]="error.isError ? 'error show' : 'error'">
+    <p>{{error.message}}</p>
+</div>
+<div [ngClass]="created.isCreated ? 'created show' : 'created'">
+    <p>{{created.message}}</p>
+</div>
 <div class="p-5">
-    <form>
+    <form [formGroup]="profileForm" (ngSubmit)="handleSubmit()">
         <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Contact name</label>
-            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <label for="name" class="form-label">Contact name</label>
+            <input type="text" class="form-control" formControlName="name" id="name" aria-describedby="emailHelp">
+            <div *ngIf="profileForm.get('name')?.invalid && profileForm.get('name')?.touched" class="text-danger">
+                Name is required.
+            </div>
         </div>
         <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Contact email</label>
-            <input type="email" class="form-control" id="exampleInputPassword1">
+            <label for="email" class="form-label">Contact email</label>
+            <input type="email" formControlName="email" class="form-control" id="email">
+            <div *ngIf="profileForm.get('email')?.invalid && profileForm.get('email')?.touched" class="text-danger">
+                Email is required.
+            </div>
         </div>
         <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Contact phone</label>
-            <input type="text" class="form-control" id="exampleInputPassword1">
+            <label for="telephone" class="form-label">Contact telephone</label>
+            <input type="text" class="form-control" formControlName="telephone" id="telephone">
+            <div *ngIf="profileForm.get('telephon')?.invalid && profileForm.get('telephone')?.touched" class="text-danger">
+                Telephone is required.
+            </div>
         </div>
         <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Contact cellphone</label>
-            <input type="text" required class="form-control" id="exampleInputPassword1">
-            <div id="emailHelp" class="form-text">Must be unique</div>
+            <label for="cellphone" class="form-label">Contact cellphone</label>
+            <input type="text" required class="form-control" formControlName="cellphone" id="cellphone">
+            <div *ngIf="profileForm.get('cellphone')?.invalid && profileForm.get('cellphone')?.touched" class="text-danger">
+                Cellphone is required.
+            </div>
         </div>
         <div class="mb-3 form-check">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-            <label class="form-check-label" for="exampleCheck1">Favorite</label>
+            <label class="form-check-label" for="favorite">Favorite</label>
+            <input type="checkbox" class="form-check-input" formControlName="favorite" id="favorite">
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
