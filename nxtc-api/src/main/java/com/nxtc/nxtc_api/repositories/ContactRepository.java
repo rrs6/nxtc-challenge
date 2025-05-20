@@ -9,6 +9,6 @@ import com.nxtc.nxtc_api.entities.Contact;
 
 @Repository
 public interface ContactRepository extends JpaRepository<Contact, Long> {
-    public Optional<Contact> findByCelular(String celular);
+    public Optional<Contact> findByCellphone(String celular);
     public Optional<Contact> findById(long id);
 }

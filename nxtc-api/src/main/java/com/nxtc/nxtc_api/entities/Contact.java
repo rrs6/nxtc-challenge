@@ -24,22 +24,22 @@ public class Contact {
     private long id;
 
     @Column(name="contato_nome")
-    private String nome;
+    private String name;
 
     @Column(name="contato_email")
     private String email;
 
     @Column(name="contato_celular")
-    private String celular;
+    private String cellphone;
 
     @Column(name="contato_telefone")
-    private String telefone;
+    private String telephone;
 
     @Column(name="contato_sn_favorito")
-    private boolean favorito;
+    private boolean favorite;
 
     @Column(name="contato_sn_ativo")
-    private boolean ativo;
+    private boolean active;
 
     @Column(name="contato_dh_cad")
     private Date createdAt;

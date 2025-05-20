@@ -19,14 +19,14 @@ public class ContactService {
     }
 
     public Contact createNewContact(CreateContactDTO contact) {
-        Optional<Contact> checkContact = this.contactRepository.findByCelular(contact.celular());
+        Optional<Contact> checkContact = this.contactRepository.findByCellphone(contact.cellphone());
         if(checkContact.isEmpty()){
             Contact newContact = new Contact();
-            newContact.setAtivo(true);
-            newContact.setFavorito(false);
-            newContact.setNome(contact.nome());
-            newContact.setCelular(contact.celular());
-            newContact.setTelefone(contact.telefone());
+            newContact.setActive(true);
+            newContact.setFavorite(false);
+            newContact.setName(contact.name());
+            newContact.setCellphone(contact.cellphone());
+            newContact.setTelephone(contact.telephone());
             newContact.setEmail(contact.email());
             return this.contactRepository.save(newContact);
         }
@@ -47,12 +47,12 @@ public class ContactService {
     public Contact changeSomeContactInfo(long id, ChangeContactInfoDTO info) {
         Contact contact = this.getContactById(id);
         if(!(contact == null)){
-            contact.setNome(info.name().isEmpty() ? contact.getNome() : info.name().get());
+            contact.setName(info.name().isEmpty() ? contact.getName() : info.name().get());
             contact.setEmail(info.email().isEmpty() ? contact.getEmail() : info.email().get());
-            contact.setCelular(info.cellphone().isEmpty() ? contact.getCelular() : info.cellphone().get());
-            contact.setTelefone(info.telephone().isEmpty() ? contact.getTelefone() : info.telephone().get());
-            contact.setAtivo(info.active().isEmpty() ? contact.isAtivo() : info.active().get());
-            contact.setFavorito(info.favorite().isEmpty() ? contact.isFavorito() : info.favorite().get());
+            contact.setCellphone(info.cellphone().isEmpty() ? contact.getCellphone() : info.cellphone().get());
+            contact.setTelephone(info.telephone().isEmpty() ? contact.getTelephone() : info.telephone().get());
+            contact.setActive(info.active().isEmpty() ? contact.isActive() : info.active().get());
+            contact.setFavorite(info.favorite().isEmpty() ? contact.isFavorite() : info.favorite().get());
             return this.contactRepository.save(contact);
         }
         return contact;
