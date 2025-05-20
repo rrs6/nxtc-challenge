@@ -1,19 +1,24 @@
 export class Contact {
-    private id!: string;
+    private id!: number;
     private name!: string;
     private email!: string;
     private phone!: string;
     private cellphone!: string;
     private favorite: boolean = false;
     private active: boolean = true;
-   constructor(name: string, email: string, phone: string, cellphone: string) {
+   constructor(id: number, name: string, email: string,
+        phone: string, cellphone: string, favorite: boolean, 
+        active: boolean) {
+    this.id = id;
     this.name = name;
     this.email = email;
     this.phone = phone;
     this.cellphone = cellphone;
+    this.favorite = favorite;
+    this.active = active;
    }
 
-   public getId(): string {
+   public getId(): number {
     return this.id;
    }
 
