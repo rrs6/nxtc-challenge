@@ -1,33 +1,37 @@
 <div class="content p-5">
     <h2 class="text-center p-3">List of contacts</h2>
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">First</th>
-                <th scope="col">Last</th>
-                <th scope="col">Handle</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>{{"@mdo"}}</td>
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>{{"@fat"}}</td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td>John</td>
-                <td>Doe</td>
-                <td>{{"@social"}}</td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="addcontainer">
+        <a id="addnew" routerLink="/contact/new">
+            <p class="ml-2 mb-2">+</p>
+        </a>
+        <span class="addspan">Adicionar novo contato</span>
+    </div>
+    <div *ngIf="!($contacts | async); else showTable" class="text-center my-4">
+        <p>Carregando contatos...</p>
+    </div>
+    <ng-template #showTable>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th *ngFor="let header of contactHeaders">
+                        {{ header }}
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let contact of $contacts | async">
+                    <td scope="row">#{{ contact.getId() }}</td>
+                    <td>{{ contact.getName() }}</td>
+                    <td>{{ contact.getEmail() }}</td>
+                    <td>{{ contact.getPhone() }}</td>
+                    <td>{{ contact.getCellphone() }}</td>
+                    <td>{{ BooleanLabels[contact.isFavorite().toString()] }}</td>
+                    <td>{{ BooleanLabels[contact.isActive().toString()] }}</td>
+                    <a id="editlink" [routerLink]="['/contact', contact.getId()]">
+                        <p>Editar</p>
+                    </a>
+                </tr>
+            </tbody>
+        </table>
+    </ng-template>
 </div>

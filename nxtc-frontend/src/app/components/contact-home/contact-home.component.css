@@ -1,0 +1,34 @@
+#addnew {
+    text-decoration: none;
+    outline: none;
+    color: rgb(91, 87, 95);
+    font-weight: 600;
+    font-size: 42px;
+    background-color: rgb(203, 203, 203);
+    border-radius: 500rem;
+    height: 50px;
+    width: 50px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+#addnew:hover + .addspan {
+    opacity: 1;
+    transition: all ease-in 0.3s;
+}
+
+.addcontainer {
+    position: absolute;
+    bottom: 20px;
+    right: 10px;
+}
+
+.addspan {
+    position: relative;
+    opacity: 0;
+    transition: all ease-out 0.3s;
+    top: -35px;
+    left: -180px;
+}
